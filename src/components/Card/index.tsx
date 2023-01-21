@@ -1,4 +1,7 @@
-import { CSSProperties } from "react"
+import { type CSSProperties } from "react"
+import SwordIcon from "@/assets/swords.svg"
+import CostIcon from "@/assets/water_drop.svg"
+import DurationIcon from "@/assets/shutter_speed.svg"
 import styles from "./index.module.css"
 
 export default function Card({
@@ -9,9 +12,9 @@ export default function Card({
 	return (
 		<div className={styles.main} style={style}>
 			<div className={styles.stats}>
-				<div> 3 dur</div>
-				<div> 1 cost</div>
-				<div> 1 atk</div>
+				<div> 3 <DurationIcon/></div>
+				<div> 1 <CostIcon/></div>
+				<div> 1 <SwordIcon/></div>
 			</div>
 		</div>
 	)

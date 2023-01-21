@@ -23,3 +23,9 @@ html, body, #root {
 *, *::before, *::after {
 	box-sizing: border-box;
 }
+
+svg {
+	height: 1em;
+	width: 1em;
+	fill: currentColor;
+}

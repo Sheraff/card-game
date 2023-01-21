@@ -17,8 +17,11 @@
 		"jsx": "react-jsx",
 		"plugins": [
 			{ "name": "typescript-plugin-css-modules" }
-		]
+		],
+		"paths": {
+			"@/*": ["./src"]
+		}
 	},
-	"include": ["src"],
+	"include": ["src", "types"],
 	"references": [{ "path": "./tsconfig.node.json" }],
 }

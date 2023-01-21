@@ -1,5 +1,14 @@
 import classNames from "classnames"
 import styles from "./index.module.css"
+import SwordIcon from "@/assets/swords.svg"
+import ShieldIcon from "@/assets/shield.svg"
+import DurationIcon from "@/assets/shutter_speed.svg"
+
+const ATTRIBUTE_ICONS = {
+	dur: DurationIcon,
+	atk: SwordIcon,
+	def: ShieldIcon,
+}
 
 type SimpleToken = {
 	type: "simple"
@@ -7,10 +16,14 @@ type SimpleToken = {
 	attribute: "dur" | "atk" | "def"
 }
 
-function SimpleTokenComponent(props: SimpleToken) {
+function SimpleTokenComponent({
+	value,
+	attribute,
+}: SimpleToken) {
+	const Icon = ATTRIBUTE_ICONS[attribute]
 	return (
-		<div className={classNames(styles.main, styles[props.attribute])}>
-			{props.value} {props.attribute}
+		<div className={classNames(styles.main, styles[attribute])}>
+			{value} <Icon />
 		</div>
 	)
 }
@@ -22,15 +35,20 @@ type ReadToken = {
 	multiply?: number
 }
 
-function ReadTokenComponent(props: ReadToken) {
+function ReadTokenComponent({
+	from,
+	multiply,
+	add,
+}: ReadToken) {
+	const Icon = ATTRIBUTE_ICONS[from]
 	return (
 		<div className={classNames(styles.main, styles.read)}>
-			{props.from}
-			{props.multiply && (
-				` ×${props.multiply}`
+			<Icon/>
+			{multiply && (
+				` ×${multiply}`
 			)}
-			{props.add && (
-				` +${props.add}`
+			{add && (
+				` +${add}`
 			)}
 		</div>
 	)
@@ -43,15 +61,20 @@ type WriteToken = {
 	multiply?: number
 }
 
-function WriteTokenComponent(props: WriteToken) {
+function WriteTokenComponent({
+	to,
+	multiply,
+	add,
+}: WriteToken) {
+	const Icon = ATTRIBUTE_ICONS[to]
 	return (
 		<div className={classNames(styles.main, styles.write)}>
-			{props.to}
-			{props.multiply && (
-				` ×${props.multiply}`
+			<Icon/>
+			{multiply && (
+				` ×${multiply}`
 			)}
-			{props.add && (
-				` +${props.add}`
+			{add && (
+				` +${add}`
 			)}
 		</div>
 	)
