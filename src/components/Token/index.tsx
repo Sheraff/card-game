@@ -3,11 +3,13 @@ import styles from "./index.module.css"
 import SwordIcon from "@/assets/swords.svg"
 import ShieldIcon from "@/assets/shield.svg"
 import DurationIcon from "@/assets/shutter_speed.svg"
+import CostIcon from "@/assets/water_drop.svg"
 
 const ATTRIBUTE_ICONS = {
 	dur: DurationIcon,
 	atk: SwordIcon,
 	def: ShieldIcon,
+	mana: CostIcon,
 }
 
 type SimpleToken = {
@@ -33,13 +35,21 @@ type ReadToken = {
 	from: "dur" | "atk" | "def"
 	add?: number
 	multiply?: number
+} | {
+	type: "read"
+	from: "static"
+	value: number
 }
 
-function ReadTokenComponent({
-	from,
-	multiply,
-	add,
-}: ReadToken) {
+function ReadTokenComponent(props: ReadToken) {
+	if (props.from === "static") {
+		return (
+			<div className={classNames(styles.main, styles.read)}>
+				{props.value}
+			</div>
+		)
+	}
+	const { from, multiply, add } = props
 	const Icon = ATTRIBUTE_ICONS[from]
 	return (
 		<div className={classNames(styles.main, styles.read)}>
@@ -56,7 +66,7 @@ function ReadTokenComponent({
 
 type WriteToken = {
 	type: "write"
-	to: "dur" | "atk" | "def"
+	to: "dur" | "atk" | "def" | "mana"
 	add?: number
 	multiply?: number
 }
