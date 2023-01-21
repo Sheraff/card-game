@@ -1,0 +1,15 @@
+.main {
+	height: 30px;
+	border-radius: 4px;
+	border: 1px solid currentColor;
+	position: relative;
+}
+
+.main::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: currentColor;
+	transform-origin: left;
+	transform: scaleX(calc(var(--health) * 100%));
+}

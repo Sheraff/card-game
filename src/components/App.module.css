@@ -1,3 +1,42 @@
 .main {
-	
+	position: relative;
+	overflow: hidden;
+	border: 1px solid currentColor;
+	height: 100%;
+	padding: 10px;
+
+	display: grid;
+	grid-template-areas:
+		"tokens enemy-health"
+		"tokens enemy-cards"
+		"tokens own-cards"
+		"hand   hand"
+		"....   own-health";
+	grid-template-rows: auto 1fr 1fr auto auto;
+	grid-template-columns: auto 1fr;
+	gap: 10px;
+}
+
+.enemyHealth {
+	grid-area: enemy-health;
+}
+
+.enemyCards {
+	grid-area: enemy-cards;
+}
+
+.ownCards {
+	grid-area: own-cards;
+}
+
+.hand {
+	grid-area: hand;
+}
+
+.ownHealth {
+	grid-area: own-health;
+}
+
+.tokens {
+	grid-area: tokens;
 }
