@@ -8,7 +8,11 @@ export default function Card({
 }) {
 	return (
 		<div className={styles.main} style={style}>
-			<h2>Card</h2>
+			<div className={styles.stats}>
+				<div> 3 dur</div>
+				<div> 1 cost</div>
+				<div> 1 atk</div>
+			</div>
 		</div>
 	)
 }
